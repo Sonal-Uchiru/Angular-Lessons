@@ -8,7 +8,7 @@ import { ButtonComponent } from './component/button/button.component';
 import {FormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AppRoutingModule} from "./app-routing.module";
-
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import {AppRoutingModule} from "./app-routing.module";
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+     HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
