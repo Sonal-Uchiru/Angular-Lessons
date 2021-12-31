@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
   StudentGender:String;
 
   constructor(private route: ActivatedRoute,private  router:Router) {
-    this.StudentName = ""
+    this.StudentName = "Animal"
     this.checked = true
     this.StudentAge = ""
     this.StudentGender = ""
