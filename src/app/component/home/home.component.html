@@ -1,4 +1,59 @@
 <h1>{{title}}</h1>
-<app-button text="Increment" color="purple" (btnClick)="toggleIncrement()" (btnClick2)="toggleDecrement()"></app-button>
+<app-button
+  text="Increment"
+  color="purple"
+  (btnClick)="toggleIncrement()"
+  (btnClick2)="toggleDecrement()">
+</app-button>
+
+<h1 [hidden]="checked">{{StudentName}}</h1>
+<br><br>
+
+<input type="text" id="txt1" [(ngModel)]="StudentName">
+<input type="text" id="txt2" [(ngModel)]="StudentAge">
+<input type="text" id="txt3" [(ngModel)]="StudentGender">
+
+
+<div>
+  <div *ngFor="let studentObject of newStudentArray">
+    <h1>
+      {{studentObject.firstName}}
+    </h1>
+    <h1>
+      {{studentObject.lastName}}
+    </h1>
+  </div>
+</div>
+
+
+
+
+
+
 
 <h2>{{number}}</h2>
+<h3>{{StudentName}}</h3>
+<h3>{{newObject.firstName}}</h3>
+
+ for loop
+<ul>
+  <li *ngFor="let newArrays of newArray">{{newArrays}}</li>
+</ul>
+
+<ul>
+  <li *ngIf="newArray; else idTemplate">object is present</li>
+</ul>
+<ng-template #idTemplate>
+  <h1>array is empty
+  </h1>
+</ng-template>
+
+
+<div>
+<!--  interpolation-->
+  <img src="{{newObject.userProfile}}" alt="narutoImg">
+<!--  property binding-->
+  <img [src] = "newObject.userProfile" alt="narutoImg">
+</div>
+
+
