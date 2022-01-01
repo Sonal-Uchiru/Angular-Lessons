@@ -20,4 +20,8 @@ export class StudentService {
   postStudent(student: Student ) {
     return this.http.post(environment.apiBaseUrl + 'student/add', student);
   }
+
+  getStudents(){
+    return this.http.get(environment.apiBaseUrl + 'student/getStudents')
+  }
 }

@@ -15,3 +15,20 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
+
+
+<div class="container" >
+  <div class="row" >
+    <div class="col-sm" *ngFor="let students of studentsArray">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" [src]="mainImage" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{students.name}}</h5>
+          <p class="card-text">{{students.age}}</p>
+          <p class="card-text">{{students.gender}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
