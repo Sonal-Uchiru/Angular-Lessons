@@ -18,25 +18,27 @@ export class AddStudentComponent implements OnInit {
   mainImage: String = 'https://i.pinimg.com/originals/12/a2/e6/12a2e6ce6ef6df80c5e34b1fb4047649.png'
 
   studentsArray: any = []
-  selectedStudentID : String = ""
+  selectedStudentID: String = ""
 
   constructor(studentService: StudentService) {
     this.studentService = studentService
   }
 
   ngOnInit(): void {
-this.getStudents()
+    this.getStudents()
   }
-getStudents(){
-  this.studentService.getStudents().subscribe(
-    result => {
-      this.studentsArray = result
-    },
-    error => {
-      console.log(error)
-    }
-  )
-}
+
+  getStudents() {
+    this.studentService.getStudents().subscribe(
+      result => {
+        this.studentsArray = result
+      },
+      error => {
+        console.log(error)
+      }
+    )
+  }
+
   AddStudent() {
 
     let newStudent = {
@@ -57,10 +59,10 @@ getStudents(){
     )
   }
 
- selectStudent(index: Number){
+  selectStudent(index: Number) {
     // @ts-ignore
-    let selectedStudent  = this.studentsArray[index]
-   // console.log(selectedStudent)
+    let selectedStudent = this.studentsArray[index]
+    // console.log(selectedStudent)
     this.studentName.setValue(selectedStudent.name)
     this.studentAge.setValue(selectedStudent.age)
     this.studentGender.setValue(selectedStudent.gender)
@@ -68,10 +70,10 @@ getStudents(){
 
   }
 
-  updateStudent(){
+  updateStudent() {
 
     let updatedStudent = {
-      _id : this.selectedStudentID,
+      _id: this.selectedStudentID,
       name: this.studentName.value,
       gender: this.studentGender.value,
       age: this.studentAge.value
@@ -88,4 +90,15 @@ getStudents(){
     )
   }
 
+  deleteStudent(id: String) {
+    this.studentService.deleteStudent(id).subscribe(
+      result => {
+        alert("student deleted")
+        this.getStudents()
+      },
+      error =>{
+        console.log(error)
+      }
+    )
+  }
 }

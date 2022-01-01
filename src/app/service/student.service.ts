@@ -28,4 +28,8 @@ export class StudentService {
   updateStudent(student:any){
     return this.http.put(environment.apiBaseUrl + 'student/update/'+student._id, student);
   }
+
+  deleteStudent(id:String){
+    return this.http.delete(environment.apiBaseUrl + 'student/delete/'+id);
+  }
 }
