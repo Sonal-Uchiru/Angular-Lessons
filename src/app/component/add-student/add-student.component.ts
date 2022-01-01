@@ -18,7 +18,9 @@ export class AddStudentComponent implements OnInit {
   mainImage: String = 'https://i.pinimg.com/originals/12/a2/e6/12a2e6ce6ef6df80c5e34b1fb4047649.png'
 
   studentsArray: any = []
+  originalStudentArray: any = []
   selectedStudentID: String = ""
+  searchResult: String = "";
 
   constructor(studentService: StudentService) {
     this.studentService = studentService
@@ -32,6 +34,7 @@ export class AddStudentComponent implements OnInit {
     this.studentService.getStudents().subscribe(
       result => {
         this.studentsArray = result
+        this.originalStudentArray = result
       },
       error => {
         console.log(error)
@@ -101,5 +104,21 @@ export class AddStudentComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+
+  searchStudent() {
+
+    this.studentsArray  = this.originalStudentArray.filter((content:any)=>{
+      let loweredSearch = content.name.toLowerCase();
+      return loweredSearch.includes(this.searchResult.toLowerCase())
+    })
+
+  }
+
+  checkChange() {
+    this.studentsArray  = this.originalStudentArray.filter((content:any)=>{
+      let loweredSearch = content.name.toLowerCase();
+      return loweredSearch.includes(this.searchResult.toLowerCase())
+    })
   }
 }
