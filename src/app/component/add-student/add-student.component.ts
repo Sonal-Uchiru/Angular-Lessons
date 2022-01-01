@@ -52,6 +52,7 @@ export class AddStudentComponent implements OnInit {
     this.studentService.postStudent(newStudent).subscribe(
       result => {
         alert("Student added")
+        this.getStudents()
       },
       error => {
         console.log(error)
