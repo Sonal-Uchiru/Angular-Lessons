@@ -5,10 +5,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { MainPageComponent } from './component/main-page/main-page.component';
 import { ButtonComponent } from './component/button/button.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
+import { AddStudentComponent } from './component/add-student/add-student.component';
 
 
 @NgModule({
@@ -16,14 +17,16 @@ import {HttpClientModule} from "@angular/common/http";
     AppComponent,
     HomeComponent,
     MainPageComponent,
-    ButtonComponent
+    ButtonComponent,
+    AddStudentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-     HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
