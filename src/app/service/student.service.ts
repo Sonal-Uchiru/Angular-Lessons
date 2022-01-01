@@ -24,4 +24,8 @@ export class StudentService {
   getStudents(){
     return this.http.get(environment.apiBaseUrl + 'student/getStudents')
   }
+
+  updateStudent(student:any){
+    return this.http.put(environment.apiBaseUrl + 'student/update/'+student._id, student);
+  }
 }
