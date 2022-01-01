@@ -31,15 +31,17 @@ export class AddStudentComponent implements OnInit {
   }
 
   getStudents() {
-    this.studentService.getStudents().subscribe(
-      result => {
-        this.studentsArray = result
-        this.originalStudentArray = result
-      },
-      error => {
-        console.log(error)
-      }
-    )
+    this.studentService.getStudents().subscribe({
+      next:value=>
+    {
+      this.studentsArray = value
+      this.originalStudentArray = value
+    }
+  ,
+    error:error => {
+      console.log(error)
+    }
+  } )
   }
 
   AddStudent() {
@@ -52,15 +54,15 @@ export class AddStudentComponent implements OnInit {
 
     console.log(newStudent)
 
-    this.studentService.postStudent(newStudent).subscribe(
-      result => {
-        alert("Student added")
+    this.studentService.postStudent(newStudent).subscribe({
+      next: value => {
+        alert("student added")
         this.getStudents()
       },
-      error => {
+      error: error => {
         console.log(error)
       }
-    )
+    })
   }
 
   selectStudent(index: Number) {
@@ -82,33 +84,36 @@ export class AddStudentComponent implements OnInit {
       gender: this.studentGender.value,
       age: this.studentAge.value
     }
-    this.studentService.updateStudent(updatedStudent).subscribe(
-      result => {
+    this.studentService.updateStudent(updatedStudent).subscribe({
+      next: value => {
         alert("student updated")
         this.getStudents()
 
       },
-      error => {
+      error: error => {
         console.log(error)
       }
-    )
+    })
   }
 
   deleteStudent(id: String) {
-    this.studentService.deleteStudent(id).subscribe(
-      result => {
-        alert("student deleted")
-        this.getStudents()
-      },
-      error =>{
-        console.log(error)
-      }
-    )
+    this.studentService.deleteStudent(id).subscribe({
+      next:value =>
+    {
+      alert("student deleted")
+      this.getStudents()
+    }
+  ,
+    error:error => {
+      console.log(error)
+    },
+      complete: () => {}
+  })
   }
 
   searchStudent() {
 
-    this.studentsArray  = this.originalStudentArray.filter((content:any)=>{
+    this.studentsArray = this.originalStudentArray.filter((content: any) => {
       let loweredSearch = content.name.toLowerCase();
       return loweredSearch.includes(this.searchResult.toLowerCase())
     })
@@ -116,7 +121,7 @@ export class AddStudentComponent implements OnInit {
   }
 
   checkChange() {
-    this.studentsArray  = this.originalStudentArray.filter((content:any)=>{
+    this.studentsArray = this.originalStudentArray.filter((content: any) => {
       let loweredSearch = content.name.toLowerCase();
       return loweredSearch.includes(this.searchResult.toLowerCase())
     })
